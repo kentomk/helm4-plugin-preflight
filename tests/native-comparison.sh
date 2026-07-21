@@ -70,9 +70,9 @@ grep -q 'no provenance file (.prov) found' "${test_temp}/verified-install.err"
 grep -q 'Installed plugin: legacy-example' "${test_temp}/bypass-install.out"
 
 plugin_metadata="${project_root}/testdata/mixed-repository/plugins/legacy/plugin.yaml"
-! rg -q '^apiVersion:' "${plugin_metadata}"
-! rg -q '^type:' "${plugin_metadata}"
-rg -q -- '--verify=false' \
+! grep -Eq '^apiVersion:' "${plugin_metadata}"
+! grep -Eq '^type:' "${plugin_metadata}"
+grep -Fq -- '--verify=false' \
   "${project_root}/testdata/mixed-repository/.github/workflows/deploy.yml"
 
 go -C "${project_root}" build -mod=vendor -trimpath \
