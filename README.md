@@ -12,15 +12,25 @@ Install the published `v0.1.0` source release:
 go install github.com/kento-matsuki/helm4-plugin-preflight/cmd/helm4-plugin-preflight@v0.1.0
 ```
 
-The release workflow also produces checksum-indexed archives for Linux and
-macOS on `amd64` and `arm64`. Verify the selected archive against
-`SHA256SUMS` before extraction. Remove the installed binary to uninstall it;
-the tool does not modify repository files or external state.
+The [v0.1.0 release](https://github.com/kento-matsuki/helm4-plugin-preflight/releases/tag/v0.1.0)
+also provides checksum-indexed archives for Linux and macOS on `amd64` and
+`arm64`. Download `SHA256SUMS` and the matching archive from that release,
+then verify it before extraction:
+
+```sh
+sha256sum -c SHA256SUMS --ignore-missing
+tar -xzf helm4-plugin-preflight_v0.1.0_linux_arm64.tar.gz
+```
+
+Replace the archive name with the asset for your OS and architecture. Remove
+the installed binary to uninstall it; the tool does not modify repository
+files or external state.
 
 ## Quick start
 
-This 60-second source-checkout example requires Go 1.26 or later while release
-binaries are not yet published.
+This 60-second source-checkout example requires Go 1.26 or later. The same
+command works with the checksum-verified release binary by replacing
+`go run ./cmd/helm4-plugin-preflight` with `helm4-plugin-preflight`.
 
 ```sh
 go run ./cmd/helm4-plugin-preflight check --root testdata/unsigned-bypass
