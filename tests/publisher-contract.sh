@@ -5,7 +5,7 @@ project_root=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)
 cd "${project_root}"
 
 jq -e '
-  .schemaVersion == 2 and .action == "create" and .owner == "kento-matsuki" and
+  .schemaVersion == 2 and (.action == "create" or .action == "update") and .owner == "kento-matsuki" and
   .name == "helm4-plugin-preflight" and
   (.description | type == "string" and length >= 20 and length <= 160) and
   (.topics | type == "array" and length >= 1 and length <= 10 and index("kento-oss") != null) and
