@@ -42,3 +42,7 @@ grep -Eiq 'AI|automated' README.md
 grep -Eq 'uses: actions/checkout@[0-9a-f]{40}([[:space:]]|$)' .github/workflows/ci.yml
 grep -Eq 'uses: actions/setup-go@[0-9a-f]{40}([[:space:]]|$)' .github/workflows/ci.yml
 ! grep -Eq 'uses: actions/(checkout|setup-go)@v[0-9]' .github/workflows/ci.yml
+grep -Eq '^- uses: actions/checkout@[0-9a-f]{40}([[:space:]]|$)' README.md
+grep -Eq '^- uses: actions/setup-go@[0-9a-f]{40}([[:space:]]|$)' README.md
+grep -Eq '^- uses: kento-matsuki/helm4-plugin-preflight@[0-9a-f]{40}([[:space:]]|$)' README.md
+! grep -Eq '^- uses: (actions/(checkout|setup-go)|kento-matsuki/helm4-plugin-preflight)@v[0-9]' README.md

@@ -6,10 +6,10 @@ Maintained by Matsuki Kento ([@kento-matsuki](https://github.com/kento-matsuki))
 
 ## Installation
 
-Install from source after the repository is published:
+Install the published `v0.1.0` source release:
 
 ```sh
-go install github.com/kento-matsuki/helm4-plugin-preflight/cmd/helm4-plugin-preflight@latest
+go install github.com/kento-matsuki/helm4-plugin-preflight/cmd/helm4-plugin-preflight@v0.1.0
 ```
 
 The release workflow also produces checksum-indexed archives for Linux and
@@ -50,17 +50,18 @@ Run the same offline check as a composite GitHub Action. The wrapper builds the
 scanner from the pinned Action revision, so set up Go 1.26 first:
 
 ```yaml
-- uses: actions/checkout@v4
-- uses: actions/setup-go@v6
+- uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+- uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6
   with:
     go-version: '1.26.x'
-- uses: kento-matsuki/helm4-plugin-preflight@v0
+- uses: kento-matsuki/helm4-plugin-preflight@4a00aaee69072e23fe34b46bbef4e1796d8062ea # v0.1.0 public main
   with:
     root: .
     format: text
 ```
 
-The Action preserves the CLI exit contract: actionable findings fail the step
+These immutable revisions resolve to public commits; the project revision above
+passed its public main CI. The Action preserves the CLI exit contract: actionable findings fail the step
 with exit `1`, while invalid or unreadable input fails it with exit `2`. Supply
 `helm-plugins` only when the runner has an installed plugin directory to audit.
 
@@ -101,7 +102,7 @@ helm4-plugin-preflight version
 - `H4P004` — installed metadata cannot prove the source artifact's provenance. This is an unknown state, not a claim that the plugin is malicious; verify the original archive or source with Helm.
 - `H4P005` — a Helm plugin install or post-renderer invocation cannot be cross-checked because `--helm-plugins` was not supplied. This is a note, not evidence that the invocation is unsafe.
 
-SARIF output uses the same `H4P001`–`H4P005` IDs, severities, deterministic ordering, and repository-relative locations as text and JSON. The scanner only reports literal commands and reads installed metadata offline. It does not claim that unknown provenance is malicious and does not implement cryptographic verification. The composite Action accepts `root`, optional `helm-plugins`, and `format`; its build uses the checked-in, license-reviewed Go dependency vendor tree and performs no dependency download. Go 1.26 must already be present on the runner while release binaries are not yet available.
+SARIF output uses the same `H4P001`–`H4P005` IDs, severities, deterministic ordering, and repository-relative locations as text and JSON. The scanner only reports literal commands and reads installed metadata offline. It does not claim that unknown provenance is malicious and does not implement cryptographic verification. The composite Action accepts `root`, optional `helm-plugins`, and `format`; its build uses the checked-in, license-reviewed Go dependency vendor tree and performs no dependency download. Go 1.26 must already be present when the Action builds from source; standalone users can instead use a checksum-verified release archive.
 
 ## Limitations and rollback
 

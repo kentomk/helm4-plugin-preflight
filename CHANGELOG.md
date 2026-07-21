@@ -4,6 +4,11 @@ All notable changes will be documented here.
 
 ## Unreleased
 
+- Add an owner-repairable release workflow that uploads the four reproducible archives and `SHA256SUMS`.
+### Fixed
+
+- Replace the unresolved `@v0` Action example and mutable setup references with publicly verified immutable commit SHAs.
+
 ### Added
 
 - Self-contained publication gates for clean-archive quickstart, immutable CI

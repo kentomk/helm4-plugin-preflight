@@ -11,5 +11,6 @@ tests/publisher-contract.sh
 tests/publisher-payload.sh
 tests/action-wrapper.sh
 tests/release-package.sh
+tests/release-workflow.sh
 tests/native-comparison.sh
 tests/quickstart-clean.sh

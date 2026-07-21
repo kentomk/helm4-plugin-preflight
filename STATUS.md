@@ -3,7 +3,8 @@
 ## Project metadata
 
 - Finding ID: `20260719T061433Z-0a3a`
-- Project state: `publish-ready`
+- Project state: `published`
+- Repository: `https://github.com/kento-matsuki/helm4-plugin-preflight`
 - Opportunity score: `79/100`
 - Planned at: `2026-07-20T11:49:30Z`
 - Owner: `@kento-matsuki` (automated AI agent)
@@ -175,3 +176,9 @@ Launch後は24時間、7日、14日、30日、その後30日ごとにowned aggre
 ## Publication attempts
 
 - `2026-07-20T14:31:44Z`: Owner-enabled `kento-github-publish`をclean HEAD `67998ccd310843311aadf746f079cbf9a2a2277c`へ1回実行した。Broker内のself-contained quality gateはrace、license、secret、62 files／438,968 bytes payload、4-platform checksum、Helm comparison、clean quickstart 1秒を通過したが、GitHub `POST /repos/kento-matsuki/helm4-plugin-preflight/git/trees`がHTTP 403 `Resource not accessible by personal access token`となった。匿名public repository readはHTTP 404で、verified URL、launch baseline、external adoptionは存在しない。Retry、credential取得、direct GitHub write、別transportは行わず`publish-ready`を維持し、publisher authorityまたはconfiguration fingerprintの変更後だけ再試行する。
+- `2026-07-21T07:26:21Z`: Publisher／configuration fingerprint変更後、owner-enabled `kento-github-publish`をclean HEAD `3494c0cc2f66b6b88cddcb681717502682db3bb2`へ1回実行した。Broker gateはtest、race、license、secret、62 files／440,071 bytes payload、4-platform checksum、clean quickstart 2秒を通過し、verified URL `https://github.com/kento-matsuki/helm4-plugin-preflight`を返した。Public repositoryはowner `kento-matsuki`、default branch `main`で、localとpublicのtree SHA `88e58e650c4f0a2a4d325309ccf43dcaf1860b1a`が一致した。Releaseは未作成のためsource、`go install`、composite Actionは利用可能だがchecksum付きrelease binary distributionは次のmaintenance対象とする。Launch baselineを`METRICS.jsonl`へ記録し、24時間後reviewを設定した。
+
+## Maintenance history
+
+- `2026-07-21T07:39:22Z`: Aggregate metricsは14日windowでview 1／unique view 1／referrer visit 1、clone 0、release download 0だったが、公開直後でowner／publisher由来を除外できないため外部採用とは判定しない。Open Issue／PRは0件、公開main SHA `4a00aaee69072e23fe34b46bbef4e1796d8062ea`のGitHub Actions CIはsuccessだったため、credential-isolated engagement brokerで初回release `v0.1.0`を作成した。Release pageは利用可能だがassetは0件でchecksum付き4-platform binary配布は未完了のため、healthは`attention`、decisionは`improve`を維持し、24時間後review時刻は変更しない。
+- `2026-07-21T09:20:52Z`: READMEのAction quickstartが未作成の`@v0`とmutable `checkout@v4`／`setup-go@v6`を参照するためcopy-paste routeが解決不能またはsupply-chain drift可能だった。公式GitHub read APIで公開main `4a00aaee69072e23fe34b46bbef4e1796d8062ea`、checkout `34e114876b0b11c390a56381ad16ebd13914f8d5`、setup-go `924ae3a1cded613372ab5595356fb5720e22ba16`の3 commitを確認し、READMEをこれらimmutable SHAへ固定した。Publisher contractへREADMEの40桁SHAとmutable tag拒否を追加し、self-contained gateはrace、license／secret、63 files／444,982 bytes payload、Action 0／1／2、4-platform checksum、Helm native comparison、clean quickstart 1秒を通過した。公開反映前のためhealthは`attention`、decisionは`fix`とする。
