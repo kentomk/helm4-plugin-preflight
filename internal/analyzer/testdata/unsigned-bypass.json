@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "toolVersion": "test",
+  "root": "FIXTURE",
+  "scanned": [
+    {
+      "path": ".github/workflows/deploy.yml"
+    }
+  ],
+  "diagnostics": [
+    {
+      "ruleId": "H4P005",
+      "severity": "note",
+      "path": ".github/workflows/deploy.yml",
+      "line": 6,
+      "column": 14,
+      "pluginValue": "unsigned",
+      "message": "plugin invocation cannot be cross-checked because installed plugin input was not provided",
+      "remediation": "pass --helm-plugins with an explicit local directory, or review this invocation manually"
+    },
+    {
+      "ruleId": "H4P001",
+      "severity": "error",
+      "path": ".github/workflows/deploy.yml",
+      "line": 6,
+      "column": 70,
+      "pluginValue": "unsigned",
+      "message": "plugin installation disables Helm 4 signature verification",
+      "remediation": "use a plugin source with provenance, replace the plugin, or pin Helm 3 until a verified migration is available"
+    }
+  ],
+  "summary": {
+    "filesScanned": 1,
+    "errors": 1,
+    "unknowns": 1
+  }
+}

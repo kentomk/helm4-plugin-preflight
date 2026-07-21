@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 2,
+  "action": "create",
+  "owner": "kento-matsuki",
+  "name": "helm4-plugin-preflight",
+  "description": "Find Helm 4 plugin verification and interface migration hazards before they break CI or deployment.",
+  "topics": [
+    "kento-oss",
+    "helm",
+    "devsecops",
+    "static-analysis"
+  ],
+  "candidateId": "20260719T061433Z-0a3a",
+  "targetUsers": "Platform engineers and chart maintainers migrating repositories with third-party Helm plugins from Helm 3 to Helm 4.",
+  "jobToBeDone": "Join repository plugin invocations with installed metadata before changing the CI Helm version, then identify unsafe verification bypasses and incompatible post-renderer paths in time to migrate, replace, or pin safely.",
+  "distributionPath": "Checksum-verified Linux and macOS release binaries, go install, and an offline composite GitHub Action using the same CLI contract.",
+  "successMetric": "Within 30 days, one unrelated external repository uses H4P001 or H4P002 to find an upgrade hazard and directly demonstrates a signed migration, replacement, or safe pin before deployment.",
+  "reviewAfterDays": 1,
+  "opportunityScore": 79,
+  "demandEvidence": [
+    {
+      "url": "https://github.com/databus23/helm-diff/blob/master/README.md",
+      "kind": "maintainer-workaround",
+      "independenceKey": "helm-diff verification bypass guidance"
+    },
+    {
+      "url": "https://github.com/chartmuseum/helm-push/issues/243",
+      "kind": "user-failure",
+      "independenceKey": "helm-push Helm 4 installation failure"
+    },
+    {
+      "url": "https://github.com/jkroepke/helm-secrets/issues/764",
+      "kind": "user-failure",
+      "independenceKey": "helm-secrets post-renderer migration failure"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "Helm 4 plugin migration guide",
+      "url": "https://helm.sh/docs/plugins/migrate/",
+      "tested": true,
+      "gap": "Documents migration contracts but does not join repository invocations with the installed plugin inventory."
+    },
+    {
+      "name": "Helm 4.2.2 plugin list and verify",
+      "url": "https://helm.sh/docs/helm/helm_plugin_verify/",
+      "tested": true,
+      "gap": "Lists legacy and unknown states and verifies source artifacts, but cannot verify an installed directory or correlate repository call sites."
+    },
+    {
+      "name": "Manual plugin.yaml metadata inspection",
+      "url": "https://helm.sh/docs/plugins/",
+      "tested": true,
+      "gap": "Shows schema fields one plugin at a time without mapping them to CI workflow invocation evidence."
+    },
+    {
+      "name": "ripgrep migration-rule search",
+      "url": "https://github.com/BurntSushi/ripgrep",
+      "tested": true,
+      "gap": "Finds literal flags and metadata fields separately but does not emit a joined, versioned, path-confined migration report."
+    }
+  ],
+  "duplicateSearch": {
+    "completed": true,
+    "summary": "Compared the official migration guide, Helm 4.2.2 native plugin commands, manual metadata inspection, and repository grep against one controlled fixture; none joined workflow and installed evidence in one report."
+  },
+  "differentiation": "An offline read-only preflight limited to literal Helm plugin invocations and local installed metadata, with deterministic text, JSON, and SARIF diagnostics while delegating signature verification to Helm.",
+  "testCommand": "scripts/publisher-gate.sh",
+  "license": "Apache-2.0",
+  "commitMessage": "Publish helm4-plugin-preflight v0.1.0"
+}

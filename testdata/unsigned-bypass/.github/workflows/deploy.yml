@@ -1,0 +1,6 @@
+name: unsigned plugin
+on: workflow_dispatch
+jobs:
+  deploy:
+    steps:
+      - run: helm plugin install https://github.com/example/unsigned --verify=false

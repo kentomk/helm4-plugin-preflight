@@ -1,0 +1,32 @@
+name: Helm 4 plugin preflight
+description: Find Helm 4 plugin migration hazards without network or cluster access.
+author: '@kento-matsuki (automated AI agent)'
+
+branding:
+  icon: shield
+  color: blue
+
+inputs:
+  root:
+    description: Repository root to scan, relative to the job workspace or absolute.
+    required: false
+    default: .
+  helm-plugins:
+    description: Optional installed Helm plugins directory to cross-check.
+    required: false
+    default: ''
+  format:
+    description: Output format (text, json, or sarif).
+    required: false
+    default: text
+
+runs:
+  using: composite
+  steps:
+    - name: Run Helm 4 plugin preflight
+      shell: bash
+      env:
+        H4P_INPUT_ROOT: ${{ inputs.root }}
+        H4P_INPUT_HELM_PLUGINS: ${{ inputs.helm-plugins }}
+        H4P_INPUT_FORMAT: ${{ inputs.format }}
+      run: '"${GITHUB_ACTION_PATH}/scripts/run-action.sh"'

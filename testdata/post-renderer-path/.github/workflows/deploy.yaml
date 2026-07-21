@@ -1,0 +1,6 @@
+name: path post-renderer
+on: workflow_dispatch
+jobs:
+  render:
+    steps:
+      - run: helm template demo ./chart --post-renderer ./scripts/render.sh

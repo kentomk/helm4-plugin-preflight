@@ -1,0 +1,6 @@
+name: malformed workflow
+jobs:
+  deploy:
+    steps:
+      - run: helm plugin install secret --verify=false
+       broken: indentation

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "toolVersion": "test",
+  "root": "FIXTURE",
+  "scanned": [
+    {
+      "path": ".github/workflows/deploy.yml"
+    }
+  ],
+  "diagnostics": [
+    {
+      "ruleId": "H4P005",
+      "severity": "note",
+      "path": ".github/workflows/deploy.yml",
+      "line": 6,
+      "column": 14,
+      "pluginValue": "secrets-post-renderer",
+      "message": "plugin invocation cannot be cross-checked because installed plugin input was not provided",
+      "remediation": "pass --helm-plugins with an explicit local directory, or review this invocation manually"
+    }
+  ],
+  "summary": {
+    "filesScanned": 1,
+    "errors": 0,
+    "unknowns": 1
+  }
+}

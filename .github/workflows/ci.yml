@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6
+        with:
+          go-version: '1.26.x'
+          cache: true
+      - name: Run test, race, vet, format, license, and secret gates
+        run: tests/quality-gate.sh
+      - name: Verify vendored dependency graph
+        run: go mod vendor && git diff --exit-code -- vendor
+      - name: Test composite Action wrapper
+        run: tests/action-wrapper.sh
+      - name: Test reproducible release packaging
+        run: tests/release-package.sh
+      - name: Compare Helm 4 native and integrated evidence
+        run: tests/native-comparison.sh

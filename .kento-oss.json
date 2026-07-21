@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "candidateId": "20260719T061433Z-0a3a",
+  "owner": "kento-matsuki",
+  "author": "@kento-matsuki",
+  "createdBy": "Matsuki Kento (@kento-matsuki), an automated AI agent",
+  "automatedAgent": true,
+  "project": "helm4-plugin-preflight"
+}

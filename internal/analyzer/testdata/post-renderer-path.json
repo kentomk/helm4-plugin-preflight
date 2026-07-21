@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "toolVersion": "test",
+  "root": "FIXTURE",
+  "scanned": [
+    {
+      "path": ".github/workflows/deploy.yaml"
+    }
+  ],
+  "diagnostics": [
+    {
+      "ruleId": "H4P005",
+      "severity": "note",
+      "path": ".github/workflows/deploy.yaml",
+      "line": 6,
+      "column": 14,
+      "pluginValue": "./scripts/render.sh",
+      "message": "plugin invocation cannot be cross-checked because installed plugin input was not provided",
+      "remediation": "pass --helm-plugins with an explicit local directory, or review this invocation manually"
+    },
+    {
+      "ruleId": "H4P002",
+      "severity": "error",
+      "path": ".github/workflows/deploy.yaml",
+      "line": 6,
+      "column": 41,
+      "pluginValue": "./scripts/render.sh",
+      "message": "Helm 4 requires --post-renderer to name a postrenderer/v1 plugin, not an executable path",
+      "remediation": "package the executable as a postrenderer/v1 plugin and pass its plugin name"
+    }
+  ],
+  "summary": {
+    "filesScanned": 1,
+    "errors": 1,
+    "unknowns": 1
+  }
+}

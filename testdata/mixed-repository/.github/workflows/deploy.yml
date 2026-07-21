@@ -1,0 +1,6 @@
+name: mixed plugin evidence
+on: workflow_dispatch
+jobs:
+  deploy:
+    steps:
+      - run: helm plugin install https://github.com/example/legacy-example --verify=false

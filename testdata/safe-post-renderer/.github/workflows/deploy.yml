@@ -1,0 +1,6 @@
+name: named post-renderer
+on: workflow_dispatch
+jobs:
+  render:
+    steps:
+      - run: helm template demo ./chart --post-renderer secrets-post-renderer

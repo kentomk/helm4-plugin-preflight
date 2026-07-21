@@ -1,0 +1,8 @@
+name: dynamic plugin inputs
+on: workflow_dispatch
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: helm plugin install "$PLUGIN_SOURCE"
+      - run: helm template demo . --post-renderer "$(resolve_renderer)"
