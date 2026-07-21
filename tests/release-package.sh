@@ -16,9 +16,16 @@ test "$(find "${test_temp}/first" -name '*.tar.gz' -type f | wc -l)" -eq 4
   sha256sum --check SHA256SUMS
 )
 
-archive="${test_temp}/first/helm4-plugin-preflight_v0.1.0_linux_arm64.tar.gz"
+host_os=$(go env GOOS)
+host_arch=$(go env GOARCH)
+case "${host_os}/${host_arch}" in
+  linux/amd64|linux/arm64|darwin/amd64|darwin/arm64) ;;
+  *) echo "unsupported release test host: ${host_os}/${host_arch}" >&2; exit 1 ;;
+esac
+
+archive="${test_temp}/first/helm4-plugin-preflight_v0.1.0_${host_os}_${host_arch}.tar.gz"
 tar -xzf "${archive}" -C "${test_temp}"
-release_root="${test_temp}/helm4-plugin-preflight_v0.1.0_linux_arm64"
+release_root="${test_temp}/helm4-plugin-preflight_v0.1.0_${host_os}_${host_arch}"
 test "$("${release_root}/helm4-plugin-preflight" version)" = \
   'helm4-plugin-preflight v0.1.0'
 test -s "${release_root}/LICENSE"
