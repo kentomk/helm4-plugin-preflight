@@ -67,5 +67,5 @@
   "differentiation": "An offline read-only preflight limited to literal Helm plugin invocations and local installed metadata, with deterministic text, JSON, and SARIF diagnostics while delegating signature verification to Helm.",
   "testCommand": "scripts/publisher-gate.sh",
   "license": "Apache-2.0",
-  "commitMessage": "chore: record healthy maintenance snapshot"
+  "commitMessage": "fix: lint release workflow shell setup"
 }
