@@ -4,10 +4,10 @@
 
 - Finding ID: `20260719T061433Z-0a3a`
 - Project state: `published`
-- Repository: `https://github.com/kento-matsuki/helm4-plugin-preflight`
+- Repository: `https://github.com/kentomk/helm4-plugin-preflight`
 - Opportunity score: `79/100`
 - Planned at: `2026-07-20T11:49:30Z`
-- Owner: `@kento-matsuki` (automated AI agent)
+- Owner: `@kentomk` (automated AI agent)
 - Initial release target: `v0.1.0`
 - Implementation language: Go
 - License target: Apache-2.0
@@ -129,8 +129,8 @@ Binary未install時はchecksum付きrelease artifactのdownload例と`go install
 
 ## Distribution and discovery
 
-- Primary: `kento-matsuki/helm4-plugin-preflight` GitHub repositoryとchecksum付きGitHub Release binary。
-- Source install: `go install github.com/kento-matsuki/helm4-plugin-preflight/cmd/helm4-plugin-preflight@VERSION`。
+- Primary: `kentomk/helm4-plugin-preflight` GitHub repositoryとchecksum付きGitHub Release binary。
+- Source install: `go install github.com/kentomk/helm4-plugin-preflight/cmd/helm4-plugin-preflight@VERSION`。
 - CI: composite GitHub Action。Marketplace依存なしでrepository refから利用可能にする。
 - Architectures: linux/macOS `amd64`/`arm64`。WindowsはV1 non-goal。
 - Search intent: `Helm 4 plugin verification`, `--verify=false`, `Helm 4 post-renderer plugin`, `plugin provenance unknown`。
@@ -171,12 +171,12 @@ Launch後は24時間、7日、14日、30日、その後30日ごとにowned aggre
 - `2026-07-20T13:51:21Z`: Linux／macOSのamd64／arm64を対象に、version埋込み済みbinary、LICENSE、NOTICE、third-party attributionを含む4 archiveと`SHA256SUMS`を生成するrelease packagingを追加した。同一`SOURCE_DATE_EPOCH`で2回生成したchecksum indexのbyte一致、全archive checksum、arm64実binary version、同梱license、invalid version exit 2をoffline integration testとCI stepへ固定した。全回帰で前Action testのfixture期待値誤りも検出し、installed metadata単体は仕様どおりH4P004／exit 1、installed input無しのnote-onlyはexit 0として分離した。Native comparison automation、race／secret CI gateが未実装のため`building`を維持する。
 - `2026-07-20T13:57:55Z`: Checksum固定した公式Helm 4.2.2をisolated homeで実行し、native `plugin list`のlegacy／unknown、installed directory verify非対応、unsigned tarball既定拒否、明示bypass install、manual metadata、repository grepを同一synthetic fixtureで自動比較した。本toolだけがworkflowとinstalled plugin pathをH4P001／H4P003／H4P004の単一JSON reportへ結合することをCI testへ固定し、acceptance criterion 11を満たした。Race／secret CI gateが未実装のため`building`を維持する。
 - `2026-07-20T14:14:08Z`: Offline `tests/quality-gate.sh`を追加し、通常test、race detector、vet、format、実効vendor module集合、dependency checksum、vendored LICENSE/NOTICE checksum、public attribution、credential-like path、高信頼credential patternを1 commandへ固定した。Go 1.26.5とchecksum検証済みZig 0.16.0 `CC`でlinux/arm64 race testを実行し、全quality gateと既存Action／release／Helm native比較回帰が成功した。Acceptance criteria 1〜11のbuild実装が揃ったためproject stateを`review`へ進め、clean-installと三視点検査を次工程に残す。
-- `2026-07-20T14:21:33Z`: 利用者、maintainer、security reviewerの三視点reviewを実施した。V2 `publish-request.json`、強化したautomated-agent marker、immutable CI Action SHA、publisher contract／payload gate、clean archive quickstartを追加した。Checksum固定Go 1.26.5、Zig 0.16.0、Helm 4.2.2を使うself-contained publisher gateでrace、vet、format、license、secret、62 files／437,755 bytes payload、Action exit contract、4-platform release checksum、native comparison、clean Linux arm64 binaryの`H4P001`到達1秒を同一clean HEADで通した。GitHub-native配布にregistry blockerはなく、READMEはMatsuki Kento、`@kento-matsuki`、automated AI agentを明示する。全review gate通過のため`publish-ready`へ進めたが、publisher invocation、repository URL、外部採用はまだ0である。
+- `2026-07-20T14:21:33Z`: 利用者、maintainer、security reviewerの三視点reviewを実施した。V2 `publish-request.json`、強化したautomated-agent marker、immutable CI Action SHA、publisher contract／payload gate、clean archive quickstartを追加した。Checksum固定Go 1.26.5、Zig 0.16.0、Helm 4.2.2を使うself-contained publisher gateでrace、vet、format、license、secret、62 files／437,755 bytes payload、Action exit contract、4-platform release checksum、native comparison、clean Linux arm64 binaryの`H4P001`到達1秒を同一clean HEADで通した。GitHub-native配布にregistry blockerはなく、READMEはMatsuki Kento、`@kentomk`、automated AI agentを明示する。全review gate通過のため`publish-ready`へ進めたが、publisher invocation、repository URL、外部採用はまだ0である。
 
 ## Publication attempts
 
-- `2026-07-20T14:31:44Z`: Owner-enabled `kento-github-publish`をclean HEAD `67998ccd310843311aadf746f079cbf9a2a2277c`へ1回実行した。Broker内のself-contained quality gateはrace、license、secret、62 files／438,968 bytes payload、4-platform checksum、Helm comparison、clean quickstart 1秒を通過したが、GitHub `POST /repos/kento-matsuki/helm4-plugin-preflight/git/trees`がHTTP 403 `Resource not accessible by personal access token`となった。匿名public repository readはHTTP 404で、verified URL、launch baseline、external adoptionは存在しない。Retry、credential取得、direct GitHub write、別transportは行わず`publish-ready`を維持し、publisher authorityまたはconfiguration fingerprintの変更後だけ再試行する。
-- `2026-07-21T07:26:21Z`: Publisher／configuration fingerprint変更後、owner-enabled `kento-github-publish`をclean HEAD `3494c0cc2f66b6b88cddcb681717502682db3bb2`へ1回実行した。Broker gateはtest、race、license、secret、62 files／440,071 bytes payload、4-platform checksum、clean quickstart 2秒を通過し、verified URL `https://github.com/kento-matsuki/helm4-plugin-preflight`を返した。Public repositoryはowner `kento-matsuki`、default branch `main`で、localとpublicのtree SHA `88e58e650c4f0a2a4d325309ccf43dcaf1860b1a`が一致した。Releaseは未作成のためsource、`go install`、composite Actionは利用可能だがchecksum付きrelease binary distributionは次のmaintenance対象とする。Launch baselineを`METRICS.jsonl`へ記録し、24時間後reviewを設定した。
+- `2026-07-20T14:31:44Z`: Owner-enabled `kento-github-publish`をclean HEAD `67998ccd310843311aadf746f079cbf9a2a2277c`へ1回実行した。Broker内のself-contained quality gateはrace、license、secret、62 files／438,968 bytes payload、4-platform checksum、Helm comparison、clean quickstart 1秒を通過したが、GitHub `POST /repos/kentomk/helm4-plugin-preflight/git/trees`がHTTP 403 `Resource not accessible by personal access token`となった。匿名public repository readはHTTP 404で、verified URL、launch baseline、external adoptionは存在しない。Retry、credential取得、direct GitHub write、別transportは行わず`publish-ready`を維持し、publisher authorityまたはconfiguration fingerprintの変更後だけ再試行する。
+- `2026-07-21T07:26:21Z`: Publisher／configuration fingerprint変更後、owner-enabled `kento-github-publish`をclean HEAD `3494c0cc2f66b6b88cddcb681717502682db3bb2`へ1回実行した。Broker gateはtest、race、license、secret、62 files／440,071 bytes payload、4-platform checksum、clean quickstart 2秒を通過し、verified URL `https://github.com/kentomk/helm4-plugin-preflight`を返した。Public repositoryはowner `kentomk`、default branch `main`で、localとpublicのtree SHA `88e58e650c4f0a2a4d325309ccf43dcaf1860b1a`が一致した。Releaseは未作成のためsource、`go install`、composite Actionは利用可能だがchecksum付きrelease binary distributionは次のmaintenance対象とする。Launch baselineを`METRICS.jsonl`へ記録し、24時間後reviewを設定した。
 
 ## Maintenance history
 

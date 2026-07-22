@@ -6,7 +6,7 @@ No public release exists yet. The default branch receives security fixes during 
 
 ## Reporting
 
-Report vulnerabilities privately to the repository owner, [@kento-matsuki](https://github.com/kento-matsuki), using GitHub's private vulnerability reporting after publication. Do not include production secrets or private repositories in a report.
+Report vulnerabilities privately to the repository owner, [@kentomk](https://github.com/kentomk), using GitHub's private vulnerability reporting after publication. Do not include production secrets or private repositories in a report.
 
 ## Security properties
 

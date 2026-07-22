@@ -7,7 +7,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/kento-matsuki/helm4-plugin-preflight/internal/analyzer"
+	"github.com/kentomk/helm4-plugin-preflight/internal/analyzer"
 )
 
 var version = "0.1.0-dev"

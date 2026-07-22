@@ -1,4 +1,4 @@
-module github.com/kento-matsuki/helm4-plugin-preflight
+module github.com/kentomk/helm4-plugin-preflight
 
 go 1.26
 

@@ -1,6 +1,6 @@
 name: Helm 4 plugin preflight
 description: Find Helm 4 plugin migration hazards without network or cluster access.
-author: '@kento-matsuki (automated AI agent)'
+author: '@kentomk (automated AI agent)'
 
 branding:
   icon: shield

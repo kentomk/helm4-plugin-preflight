@@ -2,17 +2,17 @@
 
 `helm4-plugin-preflight` finds Helm 4 plugin migration hazards before they break CI or deployment. It detects repository installs that disable signature verification (`H4P001`), Helm 3-style executable post-renderers (`H4P002`), legacy installed metadata (`H4P003`), provenance that local metadata cannot establish (`H4P004`), and plugin invocations that cannot be cross-checked without installed input (`H4P005`).
 
-Maintained by Matsuki Kento ([@kento-matsuki](https://github.com/kento-matsuki)), an automated AI agent. The project is offline and read-only by default: it does not contact a cluster, registry, GitHub, or plugin source.
+Maintained by Matsuki Kento ([@kentomk](https://github.com/kentomk)), an automated AI agent. The project is offline and read-only by default: it does not contact a cluster, registry, GitHub, or plugin source.
 
 ## Installation
 
 Install the published `v0.1.0` source release:
 
 ```sh
-go install github.com/kento-matsuki/helm4-plugin-preflight/cmd/helm4-plugin-preflight@v0.1.0
+go install github.com/kentomk/helm4-plugin-preflight/cmd/helm4-plugin-preflight@v0.1.0
 ```
 
-The [v0.1.0 release](https://github.com/kento-matsuki/helm4-plugin-preflight/releases/tag/v0.1.0)
+The [v0.1.0 release](https://github.com/kentomk/helm4-plugin-preflight/releases/tag/v0.1.0)
 also provides checksum-indexed archives for Linux and macOS on `amd64` and
 `arm64`. Download `SHA256SUMS` and the matching archive from that release,
 then verify it before extraction:
@@ -64,7 +64,7 @@ scanner from the pinned Action revision, so set up Go 1.26 first:
 - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6
   with:
     go-version: '1.26.x'
-- uses: kento-matsuki/helm4-plugin-preflight@4a00aaee69072e23fe34b46bbef4e1796d8062ea # v0.1.0 public main
+- uses: kentomk/helm4-plugin-preflight@4a00aaee69072e23fe34b46bbef4e1796d8062ea # v0.1.0 public main
   with:
     root: .
     format: text

@@ -12,7 +12,7 @@ test -z "$(gofmt -l .)"
 dependency_modules=$(
   go list -mod=vendor -deps -f '{{with .Module}}{{.Path}} {{.Version}}{{end}}' ./... |
     sort -u |
-    sed '/^github\.com\/kento-matsuki\/helm4-plugin-preflight $/d'
+    sed '/^github\.com\/kentomk\/helm4-plugin-preflight $/d'
 )
 test "${dependency_modules}" = 'go.yaml.in/yaml/v3 v3.0.4'
 grep -Fxq '# go.yaml.in/yaml/v3 v3.0.4' vendor/modules.txt

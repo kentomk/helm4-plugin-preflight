@@ -5,7 +5,7 @@ project_root=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)
 cd "${project_root}"
 
 jq -e '
-  .schemaVersion == 2 and (.action == "create" or .action == "update") and .owner == "kento-matsuki" and
+  .schemaVersion == 2 and (.action == "create" or .action == "update") and .owner == "kentomk" and
   .name == "helm4-plugin-preflight" and
   (.description | type == "string" and length >= 20 and length <= 160) and
   (.topics | type == "array" and length >= 1 and length <= 10 and index("kento-oss") != null) and
@@ -29,20 +29,20 @@ jq -e '
 
 jq -e --slurpfile request publish-request.json '
   .schemaVersion == 1 and .candidateId == $request[0].candidateId and
-  .owner == "kento-matsuki" and .author == "@kento-matsuki" and
+  .owner == "kentomk" and .author == "@kentomk" and
   .automatedAgent == true and
-  (.createdBy | test("Matsuki Kento") and test("@kento-matsuki") and test("AI|automated"; "i"))
+  (.createdBy | test("Matsuki Kento") and test("@kentomk") and test("AI|automated"; "i"))
 ' .kento-oss.json >/dev/null
 
 grep -Eq '^## (Installation|Install|Getting Started)\b' README.md
 grep -Eq '^## Quick[[:space:]]*start\b' README.md
 grep -q 'Matsuki Kento' README.md
-grep -q '@kento-matsuki' README.md
+grep -q '@kentomk' README.md
 grep -Eiq 'AI|automated' README.md
 grep -Eq 'uses: actions/checkout@[0-9a-f]{40}([[:space:]]|$)' .github/workflows/ci.yml
 grep -Eq 'uses: actions/setup-go@[0-9a-f]{40}([[:space:]]|$)' .github/workflows/ci.yml
 ! grep -Eq 'uses: actions/(checkout|setup-go)@v[0-9]' .github/workflows/ci.yml
 grep -Eq '^- uses: actions/checkout@[0-9a-f]{40}([[:space:]]|$)' README.md
 grep -Eq '^- uses: actions/setup-go@[0-9a-f]{40}([[:space:]]|$)' README.md
-grep -Eq '^- uses: kento-matsuki/helm4-plugin-preflight@[0-9a-f]{40}([[:space:]]|$)' README.md
-! grep -Eq '^- uses: (actions/(checkout|setup-go)|kento-matsuki/helm4-plugin-preflight)@v[0-9]' README.md
+grep -Eq '^- uses: kentomk/helm4-plugin-preflight@[0-9a-f]{40}([[:space:]]|$)' README.md
+! grep -Eq '^- uses: (actions/(checkout|setup-go)|kentomk/helm4-plugin-preflight)@v[0-9]' README.md

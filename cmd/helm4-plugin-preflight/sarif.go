@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"io"
 
-	"github.com/kento-matsuki/helm4-plugin-preflight/internal/analyzer"
+	"github.com/kentomk/helm4-plugin-preflight/internal/analyzer"
 )
 
 const sarifSchema = "https://json.schemastore.org/sarif-2.1.0.json"
@@ -109,7 +109,7 @@ func writeSARIF(out io.Writer, report analyzer.Report) error {
 			Tool: sarifTool{Driver: sarifDriver{
 				Name:            "helm4-plugin-preflight",
 				SemanticVersion: report.ToolVersion,
-				InformationURI:  "https://github.com/kento-matsuki/helm4-plugin-preflight",
+				InformationURI:  "https://github.com/kentomk/helm4-plugin-preflight",
 				Rules:           sarifRules,
 			}},
 			Results: results,
