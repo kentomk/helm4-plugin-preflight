@@ -90,10 +90,12 @@ go run ./cmd/helm4-plugin-preflight check --root . --shell-file scripts/deploy.s
 ## Contract in this increment
 
 ```text
+helm4-plugin-preflight --help
 helm4-plugin-preflight check [--root PATH] [--helm-plugins PATH] [--shell-file PATH ...] [--format text|json|sarif]
 helm4-plugin-preflight version
 ```
 
+- `--help`, `-h`, and `help` print top-level command discovery to stdout and exit `0`; `check --help` lists check options.
 - Exit `0`: no error or warning findings; note-only reports still exit `0`.
 - Exit `1`: one or more error or warning findings.
 - Exit `2`: invalid arguments or unreadable input.

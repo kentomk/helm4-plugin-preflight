@@ -46,3 +46,8 @@ grep -Eq '^- uses: actions/checkout@[0-9a-f]{40}([[:space:]]|$)' README.md
 grep -Eq '^- uses: actions/setup-go@[0-9a-f]{40}([[:space:]]|$)' README.md
 grep -Eq '^- uses: kentomk/helm4-plugin-preflight@[0-9a-f]{40}([[:space:]]|$)' README.md
 ! grep -Eq '^- uses: (actions/(checkout|setup-go)|kentomk/helm4-plugin-preflight)@v[0-9]' README.md
+grep -Fq 'helm4-plugin-preflight --help' README.md
+
+help_output=$(go run ./cmd/helm4-plugin-preflight --help)
+grep -Fq 'Usage:' <<<"${help_output}"
+grep -Fq 'helm4-plugin-preflight check' <<<"${help_output}"

@@ -8,6 +8,30 @@ import (
 	"testing"
 )
 
+func TestTopLevelHelpIsDiscoverable(t *testing.T) {
+	t.Parallel()
+	for _, argument := range []string{"help", "-h", "--help"} {
+		argument := argument
+		t.Run(argument, func(t *testing.T) {
+			t.Parallel()
+			var stdout bytes.Buffer
+			var stderr bytes.Buffer
+			exit := run([]string{argument}, &stdout, &stderr)
+			if exit != 0 {
+				t.Fatalf("exit = %d, stderr = %s", exit, stderr.String())
+			}
+			for _, expected := range []string{"Usage:", "helm4-plugin-preflight check", "helm4-plugin-preflight version", "check --help"} {
+				if !strings.Contains(stdout.String(), expected) {
+					t.Fatalf("help is missing %q: %s", expected, stdout.String())
+				}
+			}
+			if stderr.Len() != 0 {
+				t.Fatalf("unexpected stderr: %s", stderr.String())
+			}
+		})
+	}
+}
+
 func TestNoteOnlyReportExitsZero(t *testing.T) {
 	t.Parallel()
 	var stdout bytes.Buffer

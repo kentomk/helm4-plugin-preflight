@@ -29,11 +29,14 @@ func main() {
 
 func run(args []string, stdout, stderr io.Writer) int {
 	if len(args) == 0 {
-		fmt.Fprintln(stderr, "usage: helm4-plugin-preflight <check|version>")
+		writeUsage(stderr)
 		return 2
 	}
 
 	switch args[0] {
+	case "help", "-h", "--help":
+		writeUsage(stdout)
+		return 0
 	case "version":
 		fmt.Fprintf(stdout, "helm4-plugin-preflight %s\n", version)
 		return 0
@@ -43,6 +46,17 @@ func run(args []string, stdout, stderr io.Writer) int {
 		fmt.Fprintf(stderr, "unknown command %q\n", args[0])
 		return 2
 	}
+}
+
+func writeUsage(out io.Writer) {
+	fmt.Fprintln(out, `helm4-plugin-preflight checks repositories for Helm 4 plugin migration hazards.
+
+Usage:
+  helm4-plugin-preflight check [--root PATH] [--helm-plugins PATH] [--shell-file PATH ...] [--format text|json|sarif]
+  helm4-plugin-preflight version
+  helm4-plugin-preflight help
+
+Run "helm4-plugin-preflight check --help" for check options.`)
 }
 
 func runCheck(args []string, stdout, stderr io.Writer) int {
