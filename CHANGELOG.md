@@ -7,6 +7,8 @@ All notable changes will be documented here.
 - Add an owner-repairable release workflow that uploads the four reproducible archives and `SHA256SUMS`.
 ### Fixed
 
+- Keep the README install, archive, packaging, and immutable Action examples
+  aligned with the latest published release, enforced by the publisher gate.
 - Make top-level `--help`, `-h`, and `help` discover the CLI contract with exit `0`.
 - Replace the unresolved `@v0` Action example and mutable setup references with publicly verified immutable commit SHAs.
 

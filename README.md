@@ -6,20 +6,20 @@ Maintained by Matsuki Kento ([@kentomk](https://github.com/kentomk)), an automat
 
 ## Installation
 
-Install the published `v0.1.0` source release:
+Install the published `v0.1.1` source release:
 
 ```sh
-go install github.com/kentomk/helm4-plugin-preflight/cmd/helm4-plugin-preflight@v0.1.0
+go install github.com/kentomk/helm4-plugin-preflight/cmd/helm4-plugin-preflight@v0.1.1
 ```
 
-The [v0.1.0 release](https://github.com/kentomk/helm4-plugin-preflight/releases/tag/v0.1.0)
+The [v0.1.1 release](https://github.com/kentomk/helm4-plugin-preflight/releases/tag/v0.1.1)
 also provides checksum-indexed archives for Linux and macOS on `amd64` and
 `arm64`. Download `SHA256SUMS` and the matching archive from that release,
 then verify it before extraction:
 
 ```sh
 sha256sum -c SHA256SUMS --ignore-missing
-tar -xzf helm4-plugin-preflight_v0.1.0_linux_arm64.tar.gz
+tar -xzf helm4-plugin-preflight_v0.1.1_linux_arm64.tar.gz
 ```
 
 Replace the archive name with the asset for your OS and architecture. Remove
@@ -64,7 +64,7 @@ scanner from the pinned Action revision, so set up Go 1.26 first:
 - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6
   with:
     go-version: '1.26.x'
-- uses: kentomk/helm4-plugin-preflight@4a00aaee69072e23fe34b46bbef4e1796d8062ea # v0.1.0 public main
+- uses: kentomk/helm4-plugin-preflight@ff874902ac4ba4a84ab17749dcfa5779ec5bf297 # v0.1.1 public main
   with:
     root: .
     format: text
@@ -136,7 +136,7 @@ high-confidence tracked-file credential scan. It performs no network access.
 Build the four V1 release archives and `SHA256SUMS` without publishing them:
 
 ```sh
-SOURCE_DATE_EPOCH=0 scripts/package-release.sh v0.1.0 dist
+SOURCE_DATE_EPOCH=0 scripts/package-release.sh v0.1.1 dist
 ```
 
 The archives target Linux and macOS on `amd64` and `arm64`, embed the requested

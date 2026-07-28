@@ -48,6 +48,14 @@ grep -Eq '^- uses: kentomk/helm4-plugin-preflight@[0-9a-f]{40}([[:space:]]|$)' R
 ! grep -Eq '^- uses: (actions/(checkout|setup-go)|kentomk/helm4-plugin-preflight)@v[0-9]' README.md
 grep -Fq 'helm4-plugin-preflight --help' README.md
 
+published_release=v0.1.1
+published_main=ff874902ac4ba4a84ab17749dcfa5779ec5bf297
+grep -Fq "go install github.com/kentomk/helm4-plugin-preflight/cmd/helm4-plugin-preflight@${published_release}" README.md
+grep -Fq "releases/tag/${published_release}" README.md
+grep -Fq "helm4-plugin-preflight_${published_release}_linux_arm64.tar.gz" README.md
+grep -Fq "uses: kentomk/helm4-plugin-preflight@${published_main}" README.md
+! grep -Fq 'v0.1.0' README.md
+
 help_output=$(go run ./cmd/helm4-plugin-preflight --help)
 grep -Fq 'Usage:' <<<"${help_output}"
 grep -Fq 'helm4-plugin-preflight check' <<<"${help_output}"
