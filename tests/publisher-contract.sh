@@ -49,6 +49,10 @@ grep -Eq '^- uses: kentomk/helm4-plugin-preflight@[0-9a-f]{40}([[:space:]]|$)' R
 grep -Fq 'helm4-plugin-preflight --help' README.md
 grep -Fq "go-version: '1.26.5'" README.md
 ! grep -Fq "go-version: '1.26.x'" README.md
+grep -Fq "go-version: '1.26.5'" .github/workflows/ci.yml
+grep -Fq "go-version: '1.26.5'" .github/workflows/release.yml
+! grep -Fq "go-version: '1.26.x'" .github/workflows/ci.yml
+! grep -Fq "go-version: '1.26.x'" .github/workflows/release.yml
 
 published_release=v0.1.1
 published_main=365f5ccf59255f8e9e03c81841977da311b236e5

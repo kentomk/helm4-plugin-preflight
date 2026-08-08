@@ -183,8 +183,8 @@ Launch後は24時間、7日、14日、30日、その後30日ごとにowned aggre
 ### 2026-08-08T08:40:00Z — Action toolchain patch pin repair
 
 - Broker status confirmed current main CI success, empty Issue/PR inbox, and complete v0.1.1 release assets.
-- The README Action example used mutable Go `1.26.x` while CI, release, and publisher gates use checksum-reviewed Go `1.26.5`. The example now matches the reviewed patch exactly.
-- Publisher contract coverage rejects the mutable patch selector; runtime behavior and release assets are unchanged, and aggregate trial remains non-adoption evidence.
+- The README and both CI/release workflow examples used mutable Go `1.26.x` while the publisher gate used checksum-reviewed Go `1.26.5`. All three public paths now match the reviewed patch exactly.
+- Publisher contract coverage rejects the mutable patch selector in README and workflows; runtime behavior and release assets are unchanged, and aggregate trial remains non-adoption evidence.
 
 ### 2026-08-08T05:00:00Z — immutable Action pin drift repair
 

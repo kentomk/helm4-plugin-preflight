@@ -6,6 +6,8 @@ All notable changes will be documented here.
 
 - Pin the copy-ready Action example to the exact reviewed Go `1.26.5` patch
   used by CI and the release publisher, and reject the drifting `1.26.x` form.
+- Align the CI and release workflows with the same exact Go patch so manual and
+  repository-dispatch release repair cannot resolve a different toolchain.
 - Add an owner-repairable release workflow that uploads the four reproducible archives and `SHA256SUMS`.
 ### Fixed
 
