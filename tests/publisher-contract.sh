@@ -47,6 +47,8 @@ grep -Eq '^- uses: actions/setup-go@[0-9a-f]{40}([[:space:]]|$)' README.md
 grep -Eq '^- uses: kentomk/helm4-plugin-preflight@[0-9a-f]{40}([[:space:]]|$)' README.md
 ! grep -Eq '^- uses: (actions/(checkout|setup-go)|kentomk/helm4-plugin-preflight)@v[0-9]' README.md
 grep -Fq 'helm4-plugin-preflight --help' README.md
+grep -Fq "go-version: '1.26.5'" README.md
+! grep -Fq "go-version: '1.26.x'" README.md
 
 published_release=v0.1.1
 published_main=365f5ccf59255f8e9e03c81841977da311b236e5
