@@ -7,6 +7,8 @@ All notable changes will be documented here.
 - Add an owner-repairable release workflow that uploads the four reproducible archives and `SHA256SUMS`.
 ### Fixed
 
+- Align the copy-ready composite Action pin with the current successful public
+  main revision, while retaining the published v0.1.1 release contract.
 - Keep the README install, archive, packaging, and immutable Action examples
   aligned with the latest published release, enforced by the publisher gate.
 - Make top-level `--help`, `-h`, and `help` discover the CLI contract with exit `0`.
