@@ -39,6 +39,8 @@ grep -Eq '^## Quick[[:space:]]*start\b' README.md
 grep -q 'Matsuki Kento' README.md
 grep -q '@kentomk' README.md
 grep -Eiq 'AI|automated' README.md
+grep -Fq 'supported public release is `v0.1.1`' SECURITY.md
+! grep -Fq 'No public release exists yet' SECURITY.md
 grep -Eq 'uses: actions/checkout@[0-9a-f]{40}([[:space:]]|$)' .github/workflows/ci.yml
 grep -Eq 'uses: actions/setup-go@[0-9a-f]{40}([[:space:]]|$)' .github/workflows/ci.yml
 ! grep -Eq 'uses: actions/(checkout|setup-go)@v[0-9]' .github/workflows/ci.yml
