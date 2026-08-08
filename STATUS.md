@@ -180,6 +180,10 @@ Launch後は24時間、7日、14日、30日、その後30日ごとにowned aggre
 
 ## Maintenance history
 
+### 2026-08-08T15:12:00Z — tag-pinned release repair
+
+- Fixed the release workflow's manual and `repository_dispatch` paths to check out the requested `tagName` instead of the dispatching commit. Added a non-empty tag guard before reproducible packaging and a regression assertion in `tests/release-workflow.sh`; this prevents a repair request from silently uploading main-built bytes under an older release tag.
+
 ### 2026-08-08T08:40:00Z — Action toolchain patch pin repair
 
 - Broker status confirmed current main CI success, empty Issue/PR inbox, and complete v0.1.1 release assets.

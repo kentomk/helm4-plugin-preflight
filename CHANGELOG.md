@@ -4,6 +4,7 @@ All notable changes will be documented here.
 
 ## Unreleased
 
+- Make manual and broker-triggered release repairs check out the requested tag before building assets.
 - Align the security policy with the published `v0.1.1` release and verify the
   public-release marker in the publisher contract.
 - Pin the copy-ready Action example to the exact reviewed Go `1.26.5` patch

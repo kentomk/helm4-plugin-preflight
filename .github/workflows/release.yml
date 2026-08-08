@@ -22,7 +22,7 @@ jobs:
       - name: Check out the release tag or verified main
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
-          ref: ${{ github.event_name == 'release' && github.event.release.tag_name || github.sha }}
+          ref: ${{ github.event_name == 'release' && github.event.release.tag_name || inputs.tagName || github.event.client_payload.tagName }}
       - name: Set up Go
         uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6
         with:
@@ -33,6 +33,7 @@ jobs:
           TAG_NAME: ${{ github.event.release.tag_name || inputs.tagName || github.event.client_payload.tagName }}
         run: |
           set -euo pipefail
+          test -n "$TAG_NAME"
           SOURCE_DATE_EPOCH="$(git show -s --format=%ct HEAD)"
           export SOURCE_DATE_EPOCH
           scripts/package-release.sh "$TAG_NAME" dist
