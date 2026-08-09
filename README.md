@@ -18,11 +18,15 @@ also provides checksum-indexed archives for Linux and macOS on `amd64` and
 then verify it before extraction:
 
 ```sh
-sha256sum -c SHA256SUMS --ignore-missing
+archive=helm4-plugin-preflight_v0.1.2_linux_arm64.tar.gz
+grep "  ${archive}$" SHA256SUMS | sha256sum --check --strict -
 tar -xzf helm4-plugin-preflight_v0.1.2_linux_arm64.tar.gz
 ```
 
-Replace the archive name with the asset for your OS and architecture. Remove
+Replace the archive name and extraction directory with the asset for your OS
+and architecture. On macOS, use `shasum -a 256 --check -` in place of
+`sha256sum --check --strict -`. This verifies exactly the archive you
+downloaded rather than silently accepting a partially present manifest. Remove
 the installed binary to uninstall it; the tool does not modify repository
 files or external state.
 
