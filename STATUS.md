@@ -1,5 +1,10 @@
 # helm4-plugin-preflight status
 
+### 2026-08-09T16:55:00Z — current Action revision alignment
+
+- Broker status confirmed public main `b47d1ad6d718e2a11de9fcd139ed5fb48a0151ee` with successful CI and complete v0.1.2 release assets, while the README Action example still pinned superseded public main `48f39c71e013bef64e5e7a6bf44ee9eda9bb1b5a`.
+- Synchronized the copy-ready immutable Action pin and publisher regression. Runtime behavior, release contents, and adoption claims are unchanged.
+
 ### 2026-08-09T12:03:07Z — published release quickstart alignment
 
 - Broker status/public tree was already current for the separated verification-bypass fix, but the clean archive quickstart still built v0.1.0 while README and SECURITY specified v0.1.2.

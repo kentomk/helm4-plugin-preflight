@@ -57,7 +57,7 @@ grep -Fq "go-version: '1.26.5'" .github/workflows/release.yml
 ! grep -Fq "go-version: '1.26.x'" .github/workflows/release.yml
 
 published_release=v0.1.2
-published_main=48f39c71e013bef64e5e7a6bf44ee9eda9bb1b5a
+published_main=b47d1ad6d718e2a11de9fcd139ed5fb48a0151ee
 grep -Fq "go install github.com/kentomk/helm4-plugin-preflight/cmd/helm4-plugin-preflight@${published_release}" README.md
 grep -Fq "releases/tag/${published_release}" README.md
 grep -Fq "helm4-plugin-preflight_${published_release}_linux_arm64.tar.gz" README.md
@@ -74,6 +74,10 @@ if grep -Fq 'kentomk/helm4-plugin-preflight@df37f769472f9baf99638e765e987ae39168
   exit 1
 fi
 if grep -Fq 'kentomk/helm4-plugin-preflight@3c47201c1903c34a30425c688bf63bf16647ec79' README.md; then
+  printf '%s\n' 'publisher contract: README still pins the superseded public Action revision' >&2
+  exit 1
+fi
+if grep -Fq 'kentomk/helm4-plugin-preflight@48f39c71e013bef64e5e7a6bf44ee9eda9bb1b5a' README.md; then
   printf '%s\n' 'publisher contract: README still pins the superseded public Action revision' >&2
   exit 1
 fi

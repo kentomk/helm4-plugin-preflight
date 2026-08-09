@@ -68,7 +68,7 @@ scanner from the pinned Action revision, so set up Go 1.26 first:
 - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6
   with:
     go-version: '1.26.5'
-- uses: kentomk/helm4-plugin-preflight@48f39c71e013bef64e5e7a6bf44ee9eda9bb1b5a # v0.1.2 current public main
+- uses: kentomk/helm4-plugin-preflight@b47d1ad6d718e2a11de9fcd139ed5fb48a0151ee # v0.1.2 current public main
   with:
     root: .
     format: text
