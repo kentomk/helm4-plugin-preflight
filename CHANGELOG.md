@@ -1,5 +1,7 @@
 # Changelog
 
+- Align the copy-ready immutable Action example and publisher regression with public main `48f39c71`.
+
 - Align the source-install, archive, Action, and security-policy examples with the published `v0.1.2` release.
 
 - Align the copy-ready immutable Action example and publisher regression with public main `03d00880`.
