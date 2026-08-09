@@ -57,7 +57,7 @@ grep -Fq "go-version: '1.26.5'" .github/workflows/release.yml
 ! grep -Fq "go-version: '1.26.x'" .github/workflows/release.yml
 
 published_release=v0.1.1
-published_main=85867251b791c4a8e3551b4f64df6b749eb1920d
+published_main=03d0088087873e65b6f1470670477c08f0c438b4
 grep -Fq "go install github.com/kentomk/helm4-plugin-preflight/cmd/helm4-plugin-preflight@${published_release}" README.md
 grep -Fq "releases/tag/${published_release}" README.md
 grep -Fq "helm4-plugin-preflight_${published_release}_linux_arm64.tar.gz" README.md

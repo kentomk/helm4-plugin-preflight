@@ -1,5 +1,7 @@
 # Changelog
 
+- Align the copy-ready immutable Action example and publisher regression with public main `03d00880`.
+
 All notable changes will be documented here.
 
 ## Unreleased
