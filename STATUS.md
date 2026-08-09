@@ -1,5 +1,11 @@
 # helm4-plugin-preflight status
 
+### 2026-08-09T12:03:07Z — published release quickstart alignment
+
+- Broker status/public tree was already current for the separated verification-bypass fix, but the clean archive quickstart still built v0.1.0 while README and SECURITY specified v0.1.2.
+- Updated the quickstart to build, unpack, and execute v0.1.2, and added publisher regressions for stale v0.1.0 references. Publisher gate, payload, tests, and clean quickstart passed.
+- No runtime or CLI behavior changed; the change repairs distribution verification and keeps adoption evidence trial/weak.
+
 ### 2026-08-09T07:11:10Z — separated verification-bypass detection repair
 
 - Helm accepts both `--verify=false`/`--verify=0` and the separated forms `--verify false`/`--verify 0`. The analyzer previously covered only the equals forms, allowing a literal verification bypass to pass without `H4P001`.

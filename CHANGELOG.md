@@ -21,6 +21,8 @@ All notable changes will be documented here.
 - Add an owner-repairable release workflow that uploads the four reproducible archives and `SHA256SUMS`.
 ### Fixed
 
+- Align the clean archive quickstart with the published `v0.1.2` release and
+  reject stale `v0.1.0` archive references in the publisher contract.
 - Align the copy-ready composite Action pin with the current successful public
   main revision, while retaining the published v0.1.1 release contract.
 - Keep the README install, archive, packaging, and immutable Action examples

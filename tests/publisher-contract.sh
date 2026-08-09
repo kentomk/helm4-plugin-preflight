@@ -61,6 +61,10 @@ published_main=03d0088087873e65b6f1470670477c08f0c438b4
 grep -Fq "go install github.com/kentomk/helm4-plugin-preflight/cmd/helm4-plugin-preflight@${published_release}" README.md
 grep -Fq "releases/tag/${published_release}" README.md
 grep -Fq "helm4-plugin-preflight_${published_release}_linux_arm64.tar.gz" README.md
+grep -Fq 'package-release.sh" v0.1.2' tests/quickstart-clean.sh
+grep -Fq 'helm4-plugin-preflight_v0.1.2_linux_arm64.tar.gz' tests/quickstart-clean.sh
+grep -Fq "helm4-plugin-preflight ${published_release}" tests/quickstart-clean.sh
+! grep -Eq 'package-release.sh" v0.1.0|helm4-plugin-preflight_v0.1.0|helm4-plugin-preflight v0.1.0' tests/quickstart-clean.sh
 grep -Fq "uses: kentomk/helm4-plugin-preflight@${published_main}" README.md
 if grep -Fq 'kentomk/helm4-plugin-preflight@df37f769472f9baf99638e765e987ae39168bf93' README.md; then
   printf '%s\n' 'publisher contract: README still pins the superseded public Action revision' >&2
