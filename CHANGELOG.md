@@ -4,6 +4,7 @@ All notable changes will be documented here.
 
 ## Unreleased
 
+- Align the copy-ready composite Action example with the current successful public main revision and reject the superseded pin.
 - Pin the copy-ready composite Action example to the current successful public main and reject the superseded revision in the publisher contract.
 - Make manual and broker-triggered release repairs check out the requested tag before building assets.
 - Align the security policy with the published `v0.1.1` release and verify the
