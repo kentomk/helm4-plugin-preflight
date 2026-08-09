@@ -39,7 +39,7 @@ grep -Eq '^## Quick[[:space:]]*start\b' README.md
 grep -q 'Matsuki Kento' README.md
 grep -q '@kentomk' README.md
 grep -Eiq 'AI|automated' README.md
-grep -Fq 'supported public release is `v0.1.1`' SECURITY.md
+grep -Fq 'supported public release is `v0.1.2`' SECURITY.md
 ! grep -Fq 'No public release exists yet' SECURITY.md
 grep -Eq 'uses: actions/checkout@[0-9a-f]{40}([[:space:]]|$)' .github/workflows/ci.yml
 grep -Eq 'uses: actions/setup-go@[0-9a-f]{40}([[:space:]]|$)' .github/workflows/ci.yml
@@ -56,7 +56,7 @@ grep -Fq "go-version: '1.26.5'" .github/workflows/release.yml
 ! grep -Fq "go-version: '1.26.x'" .github/workflows/ci.yml
 ! grep -Fq "go-version: '1.26.x'" .github/workflows/release.yml
 
-published_release=v0.1.1
+published_release=v0.1.2
 published_main=03d0088087873e65b6f1470670477c08f0c438b4
 grep -Fq "go install github.com/kentomk/helm4-plugin-preflight/cmd/helm4-plugin-preflight@${published_release}" README.md
 grep -Fq "releases/tag/${published_release}" README.md

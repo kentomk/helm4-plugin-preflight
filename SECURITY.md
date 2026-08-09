@@ -2,7 +2,7 @@
 
 ## Supported versions
 
-The supported public release is `v0.1.1`. The default branch receives security
+The supported public release is `v0.1.2`. The default branch receives security
 fixes during development; users should update to the latest published release
 after reviewing its changelog.
 
