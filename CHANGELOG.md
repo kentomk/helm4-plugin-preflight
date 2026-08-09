@@ -10,6 +10,7 @@ All notable changes will be documented here.
 
 ## Unreleased
 
+- Align the copy-ready immutable Action example and publisher contract with public main `3eb3d0d7`.
 - Make the copy-ready release install verify only the selected archive with a
   strict, exact checksum match, and add a publisher regression against the
   partial-manifest shortcut.
