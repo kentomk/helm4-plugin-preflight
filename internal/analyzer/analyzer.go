@@ -400,8 +400,13 @@ func inspectCommand(command, path string, line, baseColumn int, missingPlugins b
 			pluginValue := installedSourceName(tokens[index+3:])
 			migrationInvocation = true
 			invocationValue = pluginValue
-			for _, token := range tokens[index+3:] {
-				if token == "--verify=false" || token == "--verify=0" {
+			installTokens := tokens[index+3:]
+			for tokenIndex, token := range installTokens {
+				verificationDisabled := token == "--verify=false" || token == "--verify=0"
+				if token == "--verify" && tokenIndex+1 < len(installTokens) {
+					verificationDisabled = installTokens[tokenIndex+1] == "false" || installTokens[tokenIndex+1] == "0"
+				}
+				if verificationDisabled {
 					diagnostics = append(diagnostics, Diagnostic{
 						RuleID: "H4P001", Severity: "error", Path: path, Line: line,
 						Column: baseColumn + strings.Index(command, token), PluginValue: pluginValue,

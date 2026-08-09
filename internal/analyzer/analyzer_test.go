@@ -220,6 +220,19 @@ func TestShellTokensPreserveQuotedPath(t *testing.T) {
 	}
 }
 
+func TestSeparatedVerifyFalseDisablesVerification(t *testing.T) {
+	t.Parallel()
+	for _, command := range []string{
+		"helm plugin install https://example.test/plugin.tgz --verify false",
+		"helm plugin install https://example.test/plugin.tgz --verify 0",
+	} {
+		diagnostics := inspectCommand(command, "workflow.yml", 7, 1, false)
+		if len(diagnostics) != 1 || diagnostics[0].RuleID != "H4P001" {
+			t.Fatalf("command %q diagnostics = %#v, want one H4P001", command, diagnostics)
+		}
+	}
+}
+
 func TestMissingInstalledInputIsNote(t *testing.T) {
 	t.Parallel()
 	report, err := Check("../../testdata/dynamic-unknown", "", nil, "test")

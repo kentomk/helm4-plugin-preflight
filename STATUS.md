@@ -1,5 +1,10 @@
 # helm4-plugin-preflight status
 
+### 2026-08-09T07:11:10Z — separated verification-bypass detection repair
+
+- Helm accepts both `--verify=false`/`--verify=0` and the separated forms `--verify false`/`--verify 0`. The analyzer previously covered only the equals forms, allowing a literal verification bypass to pass without `H4P001`.
+- Added separated-value detection and regression coverage for both false values. Existing tokenization, diagnostic location, exit contract, and safe unknown handling remain unchanged.
+
 ## Project metadata
 
 - Finding ID: `20260719T061433Z-0a3a`
