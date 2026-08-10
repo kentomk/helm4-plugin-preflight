@@ -70,6 +70,8 @@ grep -Fq 'unsafe_member=$(tar -tzf "$archive" | grep -E' README.md
 grep -Fq 'archive contains an unsafe member path' README.md
 grep -Fq 'extract_dir=$(mktemp -d)' README.md
 grep -Fq 'tar -xzf "$archive" -C "$extract_dir"' README.md
+grep -Fq 'expected_binary="$extract_dir/helm4-plugin-preflight_v0.1.2_linux_arm64/helm4-plugin-preflight"' README.md
+grep -Fq 'test -f "$expected_binary" && test ! -L "$expected_binary"' README.md
 grep -Fq 'trap '\''rm -rf "$extract_dir"'\'' EXIT HUP INT TERM' README.md
 grep -Fq 'shasum -a 256 --check -' README.md
 ! grep -Fq 'sha256sum -c SHA256SUMS --ignore-missing' README.md

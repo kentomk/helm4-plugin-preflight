@@ -1,5 +1,12 @@
 # helm4-plugin-preflight status
 
+### 2026-08-10T09:48:00Z — reject symlink archive payloads before use
+
+- The copy-ready archive verification example now requires the extracted
+  binary to be a regular non-symlink file before later execution.
+- Added publisher-contract coverage for this boundary. Local quality and
+  broker publication remain pending for this change.
+
 ### 2026-08-10T06:58:00Z — reject unsafe archive members before extraction
 
 - The checksum-verified README installation example now rejects absolute or

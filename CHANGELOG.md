@@ -1,5 +1,8 @@
 # Changelog
 
+- Require the extracted archive binary to be a regular non-symlink file before
+  the copy-ready verification example accepts it for later use.
+
 - Reject absolute or parent-directory tar members before extracting the
   checksum-verified archive in the copy-ready installation example.
 
