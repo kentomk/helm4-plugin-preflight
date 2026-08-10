@@ -2,6 +2,8 @@
 
 - Align the copy-ready immutable Action example and publisher regression with public main `48f39c71`.
 
+- Pin the copy-ready Action example to the immutable v0.1.2 release revision so routine main updates do not make the documented integration stale.
+
 - Align the source-install, archive, Action, and security-policy examples with the published `v0.1.2` release.
 
 - Align the copy-ready immutable Action example and publisher regression with public main `03d00880`.
@@ -9,6 +11,8 @@
 All notable changes will be documented here.
 
 ## Unreleased
+
+- Pin the composite Action example to the v0.1.2 release revision instead of a moving public-main commit, and make the publisher gate enforce that stable distribution contract.
 
 - Align the copy-ready immutable Action example and publisher regression with
   public main `f22f1411c8bb77d3bc388aec8edd8e0f1bdc7e88`.

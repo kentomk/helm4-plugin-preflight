@@ -1,5 +1,10 @@
 # helm4-plugin-preflight status
 
+### 2026-08-10T00:08:00Z — stabilize Action distribution pin
+
+- Replaced the README Action pin to moving public main with the immutable commit included in the published v0.1.2 release (`c3523085dc98ec2cce96a37d5e5d0805e441cba4`).
+- Updated the publisher regression and English release guidance to enforce the stable release revision. Routine maintenance commits can now update main without invalidating the copy-ready Action example; a future release remains the explicit point for changing the pin.
+
 ### 2026-08-09T16:55:00Z — current Action revision alignment
 
 - Broker status confirmed public main `b47d1ad6d718e2a11de9fcd139ed5fb48a0151ee` with successful CI and complete v0.1.2 release assets, while the README Action example still pinned superseded public main `48f39c71e013bef64e5e7a6bf44ee9eda9bb1b5a`.

@@ -68,14 +68,14 @@ scanner from the pinned Action revision, so set up Go 1.26 first:
 - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6
   with:
     go-version: '1.26.5'
-- uses: kentomk/helm4-plugin-preflight@f22f1411c8bb77d3bc388aec8edd8e0f1bdc7e88 # v0.1.2 current public main
+- uses: kentomk/helm4-plugin-preflight@c3523085dc98ec2cce96a37d5e5d0805e441cba4 # v0.1.2 release revision
   with:
     root: .
     format: text
 ```
 
-These immutable revisions resolve to public commits; the project revision above
-passed its public main CI. The Action preserves the CLI exit contract: actionable findings fail the step
+These immutable revisions resolve to public commits; the release revision above
+was included in the published v0.1.2 release. The Action preserves the CLI exit contract: actionable findings fail the step
 with exit `1`, while invalid or unreadable input fails it with exit `2`. Supply
 `helm-plugins` only when the runner has an installed plugin directory to audit.
 
