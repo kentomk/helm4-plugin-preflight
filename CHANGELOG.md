@@ -1,5 +1,9 @@
 # Changelog
 
+- Make archive manifest creation, release verification, and the clean
+  quickstart select `sha256sum` or `shasum -a 256`, failing closed when neither
+  verifier is available.
+
 - Require the extracted archive binary to be a regular non-symlink file before
   the copy-ready verification example accepts it for later use.
 

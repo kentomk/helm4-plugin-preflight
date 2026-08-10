@@ -10,7 +10,14 @@ start_seconds=$(date +%s)
 SOURCE_DATE_EPOCH=0 "${test_temp}/scripts/package-release.sh" v0.1.2 "${test_temp}/dist"
 (
   cd "${test_temp}/dist"
-  sha256sum --check SHA256SUMS
+  if command -v sha256sum >/dev/null 2>&1; then
+    sha256sum --check SHA256SUMS
+  elif command -v shasum >/dev/null 2>&1; then
+    shasum -a 256 --check SHA256SUMS
+  else
+    echo 'need sha256sum or shasum for checksum verification' >&2
+    exit 2
+  fi
 )
 archive="${test_temp}/dist/helm4-plugin-preflight_v0.1.2_linux_arm64.tar.gz"
 tar -xzf "${archive}" -C "${test_temp}"

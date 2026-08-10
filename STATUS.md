@@ -1,5 +1,13 @@
 # helm4-plugin-preflight status
 
+### 2026-08-10T13:05:00Z — make archive checksum verification portable
+
+- The README, package script, release test, and clean quickstart now share an
+  explicit `sha256sum`/`shasum -a 256` selection and fail closed if neither is
+  available.
+- Analyzer behavior, release assets, and adoption claims are unchanged; local
+  quality and broker publication remain required.
+
 ### 2026-08-10T09:48:00Z — reject symlink archive payloads before use
 
 - The copy-ready archive verification example now requires the extracted

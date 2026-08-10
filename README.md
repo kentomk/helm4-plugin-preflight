@@ -23,7 +23,14 @@ then verify it before extraction:
 archive=helm4-plugin-preflight_v0.1.2_linux_arm64.tar.gz
 checksum_matches=$(grep -Ec "^[0-9a-fA-F]{64}  ${archive}$" SHA256SUMS || true)
 test "$checksum_matches" -eq 1 || { echo "expected exactly one checksum row for $archive" >&2; exit 2; }
-grep -E "^[0-9a-fA-F]{64}  ${archive}$" SHA256SUMS | sha256sum --check --strict -
+if command -v sha256sum >/dev/null 2>&1; then
+  grep -E "^[0-9a-fA-F]{64}  ${archive}$" SHA256SUMS | sha256sum --check --strict -
+elif command -v shasum >/dev/null 2>&1; then
+  grep -E "^[0-9a-fA-F]{64}  ${archive}$" SHA256SUMS | shasum -a 256 --check -
+else
+  echo 'need sha256sum or shasum for checksum verification' >&2
+  exit 2
+fi
 unsafe_member=$(tar -tzf "$archive" | grep -E '(^/|(^|/)\.\.(\/|$))' || true)
 test -z "$unsafe_member" || { echo 'archive contains an unsafe member path' >&2; exit 2; }
 extract_dir=$(mktemp -d)
@@ -34,8 +41,8 @@ test -f "$expected_binary" && test ! -L "$expected_binary" || { echo 'archive bi
 ```
 
 Replace the archive name and extraction path with the asset for your OS
-and architecture. On macOS, use `shasum -a 256 --check -` in place of
-`sha256sum --check --strict -`. This verifies exactly the archive you
+and architecture. The example selects `sha256sum` or `shasum -a 256` and fails
+closed if neither verifier is available. This verifies exactly the archive you
 downloaded rather than silently accepting a partially present manifest. Remove
 the installed binary to uninstall it; the tool does not modify repository
 files or external state.

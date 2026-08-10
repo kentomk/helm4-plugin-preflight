@@ -66,6 +66,9 @@ grep -Fq "helm4-plugin-preflight_${published_release}_linux_arm64.tar.gz" README
 grep -Fq 'checksum_matches=$(grep -Ec' README.md
 grep -Fq 'test "$checksum_matches" -eq 1' README.md
 grep -Fq 'grep -E "^[0-9a-fA-F]{64}  ${archive}$" SHA256SUMS' README.md
+grep -Fq 'if command -v sha256sum >/dev/null 2>&1; then' README.md
+grep -Fq 'elif command -v shasum >/dev/null 2>&1; then' README.md
+grep -Fq 'need sha256sum or shasum for checksum verification' README.md
 grep -Fq 'unsafe_member=$(tar -tzf "$archive" | grep -E' README.md
 grep -Fq 'archive contains an unsafe member path' README.md
 grep -Fq 'extract_dir=$(mktemp -d)' README.md

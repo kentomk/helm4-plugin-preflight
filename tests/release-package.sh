@@ -13,7 +13,14 @@ cmp "${test_temp}/first/SHA256SUMS" "${test_temp}/second/SHA256SUMS"
 test "$(find "${test_temp}/first" -name '*.tar.gz' -type f | wc -l)" -eq 4
 (
   cd "${test_temp}/first"
-  sha256sum --check SHA256SUMS
+  if command -v sha256sum >/dev/null 2>&1; then
+    sha256sum --check SHA256SUMS
+  elif command -v shasum >/dev/null 2>&1; then
+    shasum -a 256 --check SHA256SUMS
+  else
+    echo 'need sha256sum or shasum for checksum verification' >&2
+    exit 2
+  fi
 )
 
 host_os=$(go env GOOS)

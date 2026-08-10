@@ -24,6 +24,14 @@ fi
 release_temp=$(mktemp -d)
 trap 'rm -rf "${release_temp}"' EXIT
 source_date_epoch=${SOURCE_DATE_EPOCH:-0}
+if command -v sha256sum >/dev/null 2>&1; then
+  checksum_command=(sha256sum)
+elif command -v shasum >/dev/null 2>&1; then
+  checksum_command=(shasum -a 256)
+else
+  echo 'package release requires sha256sum or shasum' >&2
+  exit 1
+fi
 if [[ ! ${source_date_epoch} =~ ^[0-9]+$ ]]; then
   echo "SOURCE_DATE_EPOCH must be a non-negative integer" >&2
   exit 2
@@ -61,5 +69,5 @@ done
 
 (
   cd "${output_dir}"
-  LC_ALL=C sha256sum ./*.tar.gz | sed 's#  \./#  #' > SHA256SUMS
+  LC_ALL=C "${checksum_command[@]}" ./*.tar.gz | sed 's#  \./#  #' > SHA256SUMS
 )
