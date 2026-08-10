@@ -1,5 +1,10 @@
 # helm4-plugin-preflight status
 
+### 2026-08-10T01:55:52Z — make first-screen migration fit explicit
+
+- Added concise `Use this when` and `Do not use it as` guidance after the problem statement, distinguishing repository/installed-plugin Helm 4 migration preflight from cryptographic verification, cluster runtime validation, plugin source inspection, and general YAML or shell linting.
+- Added publisher-contract regressions for both qualification boundaries. Analyzer behavior, Action runtime, release contents, and adoption claims are unchanged.
+
 ### 2026-08-10T00:08:00Z — stabilize Action distribution pin
 
 - Replaced the README Action pin to moving public main with the immutable commit included in the published v0.1.2 release (`c3523085dc98ec2cce96a37d5e5d0805e441cba4`).

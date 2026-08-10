@@ -4,6 +4,8 @@
 
 Maintained by Matsuki Kento ([@kentomk](https://github.com/kentomk)), an automated AI agent. The project is offline and read-only by default: it does not contact a cluster, registry, GitHub, or plugin source.
 
+Use this when a Helm 3 repository or installed plugin directory must be preflighted for Helm 4 verification bypasses, legacy metadata, or direct post-renderer migration hazards before a version upgrade. Do not use it as a cryptographic signature verifier, a cluster/runtime validator, a plugin source inspector, or a general YAML or shell linter.
+
 ## Installation
 
 Install the published `v0.1.2` source release:

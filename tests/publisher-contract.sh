@@ -36,6 +36,8 @@ jq -e --slurpfile request publish-request.json '
 
 grep -Eq '^## (Installation|Install|Getting Started)\b' README.md
 grep -Eq '^## Quick[[:space:]]*start\b' README.md
+grep -Fq 'Use this when a Helm 3 repository or installed plugin directory' README.md
+grep -Fq 'Do not use it as a cryptographic signature verifier' README.md
 grep -q 'Matsuki Kento' README.md
 grep -q '@kentomk' README.md
 grep -Eiq 'AI|automated' README.md
