@@ -63,7 +63,12 @@ published_action_commit=c3523085dc98ec2cce96a37d5e5d0805e441cba4
 grep -Fq "go install github.com/kentomk/helm4-plugin-preflight/cmd/helm4-plugin-preflight@${published_release}" README.md
 grep -Fq "releases/tag/${published_release}" README.md
 grep -Fq "helm4-plugin-preflight_${published_release}_linux_arm64.tar.gz" README.md
-grep -Fq 'grep "  ${archive}$" SHA256SUMS | sha256sum --check --strict -' README.md
+grep -Fq 'checksum_matches=$(grep -Ec' README.md
+grep -Fq 'test "$checksum_matches" -eq 1' README.md
+grep -Fq 'grep -E "^[0-9a-fA-F]{64}  ${archive}$" SHA256SUMS' README.md
+grep -Fq 'extract_dir=$(mktemp -d)' README.md
+grep -Fq 'tar -xzf "$archive" -C "$extract_dir"' README.md
+grep -Fq 'trap '\''rm -rf "$extract_dir"'\'' EXIT HUP INT TERM' README.md
 grep -Fq 'shasum -a 256 --check -' README.md
 ! grep -Fq 'sha256sum -c SHA256SUMS --ignore-missing' README.md
 grep -Fq 'package-release.sh" v0.1.2' tests/quickstart-clean.sh

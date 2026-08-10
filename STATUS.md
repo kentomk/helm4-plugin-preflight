@@ -1,5 +1,10 @@
 # helm4-plugin-preflight status
 
+### 2026-08-10T04:55:00Z — fail-closed archive verification example
+
+- The release archive example now requires exactly one checksum row for the selected asset and extracts only after verification into a temporary directory with cleanup. This prevents an ambiguous manifest or interrupted verification from silently using the wrong archive or polluting the caller's workspace.
+- Added publisher-contract coverage for the exact-row and temporary-extraction boundary. The local change requires broker publication and public main CI confirmation before it counts as public maintenance.
+
 ### 2026-08-10T01:55:52Z — make first-screen migration fit explicit
 
 - Added concise `Use this when` and `Do not use it as` guidance after the problem statement, distinguishing repository/installed-plugin Helm 4 migration preflight from cryptographic verification, cluster runtime validation, plugin source inspection, and general YAML or shell linting.

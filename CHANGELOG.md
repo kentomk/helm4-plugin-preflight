@@ -65,3 +65,6 @@ All notable changes will be documented here.
 - Deterministic text and versioned JSON output with fixture-backed golden tests.
 - SARIF 2.1.0 output with stable rule metadata, severity mapping, and repository-relative locations.
 - Bounded YAML syntax validation for workflows and installed plugin metadata, with content-safe exit `2` failures.
+## Unreleased
+
+- Reject missing or duplicate selected archive checksum rows and stage verification extraction in a temporary directory.

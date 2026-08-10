@@ -21,11 +21,15 @@ then verify it before extraction:
 
 ```sh
 archive=helm4-plugin-preflight_v0.1.2_linux_arm64.tar.gz
-grep "  ${archive}$" SHA256SUMS | sha256sum --check --strict -
-tar -xzf helm4-plugin-preflight_v0.1.2_linux_arm64.tar.gz
+checksum_matches=$(grep -Ec "^[0-9a-fA-F]{64}  ${archive}$" SHA256SUMS || true)
+test "$checksum_matches" -eq 1 || { echo "expected exactly one checksum row for $archive" >&2; exit 2; }
+grep -E "^[0-9a-fA-F]{64}  ${archive}$" SHA256SUMS | sha256sum --check --strict -
+extract_dir=$(mktemp -d)
+trap 'rm -rf "$extract_dir"' EXIT HUP INT TERM
+tar -xzf "$archive" -C "$extract_dir"
 ```
 
-Replace the archive name and extraction directory with the asset for your OS
+Replace the archive name and extraction path with the asset for your OS
 and architecture. On macOS, use `shasum -a 256 --check -` in place of
 `sha256sum --check --strict -`. This verifies exactly the archive you
 downloaded rather than silently accepting a partially present manifest. Remove
