@@ -66,6 +66,8 @@ grep -Fq "helm4-plugin-preflight_${published_release}_linux_arm64.tar.gz" README
 grep -Fq 'checksum_matches=$(grep -Ec' README.md
 grep -Fq 'test "$checksum_matches" -eq 1' README.md
 grep -Fq 'grep -E "^[0-9a-fA-F]{64}  ${archive}$" SHA256SUMS' README.md
+grep -Fq 'unsafe_member=$(tar -tzf "$archive" | grep -E' README.md
+grep -Fq 'archive contains an unsafe member path' README.md
 grep -Fq 'extract_dir=$(mktemp -d)' README.md
 grep -Fq 'tar -xzf "$archive" -C "$extract_dir"' README.md
 grep -Fq 'trap '\''rm -rf "$extract_dir"'\'' EXIT HUP INT TERM' README.md

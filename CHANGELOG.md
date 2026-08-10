@@ -1,5 +1,8 @@
 # Changelog
 
+- Reject absolute or parent-directory tar members before extracting the
+  checksum-verified archive in the copy-ready installation example.
+
 - Align the copy-ready immutable Action example and publisher regression with public main `48f39c71`.
 
 - Pin the copy-ready Action example to the immutable v0.1.2 release revision so routine main updates do not make the documented integration stale.

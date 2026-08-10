@@ -1,5 +1,12 @@
 # helm4-plugin-preflight status
 
+### 2026-08-10T06:58:00Z — reject unsafe archive members before extraction
+
+- The checksum-verified README installation example now rejects absolute or
+  `..` tar members before extracting into its temporary directory.
+- Added publisher-contract coverage for this boundary. Analyzer behavior,
+  release assets, support matrix, and adoption claims are unchanged.
+
 ### 2026-08-10T04:55:00Z — fail-closed archive verification example
 
 - The release archive example now requires exactly one checksum row for the selected asset and extracts only after verification into a temporary directory with cleanup. This prevents an ambiguous manifest or interrupted verification from silently using the wrong archive or polluting the caller's workspace.

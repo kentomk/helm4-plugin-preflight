@@ -24,6 +24,8 @@ archive=helm4-plugin-preflight_v0.1.2_linux_arm64.tar.gz
 checksum_matches=$(grep -Ec "^[0-9a-fA-F]{64}  ${archive}$" SHA256SUMS || true)
 test "$checksum_matches" -eq 1 || { echo "expected exactly one checksum row for $archive" >&2; exit 2; }
 grep -E "^[0-9a-fA-F]{64}  ${archive}$" SHA256SUMS | sha256sum --check --strict -
+unsafe_member=$(tar -tzf "$archive" | grep -E '(^/|(^|/)\.\.(\/|$))' || true)
+test -z "$unsafe_member" || { echo 'archive contains an unsafe member path' >&2; exit 2; }
 extract_dir=$(mktemp -d)
 trap 'rm -rf "$extract_dir"' EXIT HUP INT TERM
 tar -xzf "$archive" -C "$extract_dir"
